@@ -1,0 +1,62 @@
+7767517
+60 68
+Input                    in0                      0 1 in0
+Padding                  pad_0                    1 1 in0 1 0=0 1=38 2=0 3=32 4=1 5=0 6=0
+Convolution              conv_4                   1 1 1 2 0=16 1=2 11=2 12=1 13=2 14=0 2=1 3=2 4=0 5=1 6=192
+Permute                  permute_34               1 1 2 3 0=3
+LayerNorm                ln_21                    1 1 3 4 0=16 1=1.000000e-06 2=1
+Permute                  permute_35               1 1 4 5 0=4
+Split                    splitncnn_0              1 2 5 6 7
+Convolution              conv_5                   1 1 6 8 0=64 1=3 11=3 12=1 13=1 14=1 2=1 3=1 4=1 5=1 6=9216
+Swish                    silu_28                  1 1 8 9
+Split                    splitncnn_1              1 2 9 10 11
+Pooling                  gap_1                    1 1 11 12 0=1 4=1
+Convolution              conv_6                   1 1 12 13 0=4 1=1 11=1 12=1 13=1 14=0 2=1 3=1 4=0 5=1 6=256
+Swish                    silu_29                  1 1 13 14
+Convolution              convsigmoid_0            1 1 14 15 0=64 1=1 11=1 12=1 13=1 14=0 2=1 3=1 4=0 5=1 6=256 9=4
+Reshape                  reshape_42               1 1 15 16 0=1 1=1 2=-1
+BinaryOp                 mul_0                    2 1 10 16 17 0=2
+Convolution              conv_8                   1 1 17 18 0=16 1=1 11=1 12=1 13=1 14=0 2=1 3=1 4=0 5=1 6=1024
+BinaryOp                 add_1                    2 1 18 7 19 0=0
+Split                    splitncnn_2              1 2 19 20 21
+Permute                  permute_36               1 1 21 22 0=3
+LayerNorm                ln_22                    1 1 22 23 0=16 1=1.000000e-06 2=1
+Permute                  permute_37               1 1 23 24 0=4
+Convolution              conv_9                   1 1 24 25 0=32 1=2 11=2 12=1 13=2 14=0 2=1 3=2 4=0 5=1 6=2048
+Split                    splitncnn_3              1 2 25 26 27
+Convolution              conv_10                  1 1 26 28 0=128 1=3 11=3 12=1 13=1 14=1 2=1 3=1 4=1 5=1 6=36864
+Swish                    silu_30                  1 1 28 29
+Split                    splitncnn_4              1 2 29 30 31
+Pooling                  gap_2                    1 1 31 32 0=1 4=1
+Convolution              conv_11                  1 1 32 33 0=8 1=1 11=1 12=1 13=1 14=0 2=1 3=1 4=0 5=1 6=1024
+Swish                    silu_31                  1 1 33 34
+Convolution              convsigmoid_1            1 1 34 35 0=128 1=1 11=1 12=1 13=1 14=0 2=1 3=1 4=0 5=1 6=1024 9=4
+Reshape                  reshape_43               1 1 35 36 0=1 1=1 2=-1
+BinaryOp                 mul_2                    2 1 30 36 37 0=2
+Convolution              conv_13                  1 1 37 38 0=32 1=1 11=1 12=1 13=1 14=0 2=1 3=1 4=0 5=1 6=4096
+BinaryOp                 add_3                    2 1 38 27 39 0=0
+Split                    splitncnn_5              1 2 39 40 41
+Convolution              conv_14                  1 1 40 42 0=128 1=3 11=3 12=1 13=1 14=1 2=1 3=1 4=1 5=1 6=36864
+Swish                    silu_32                  1 1 42 43
+Split                    splitncnn_6              1 2 43 44 45
+Pooling                  gap_3                    1 1 45 46 0=1 4=1
+Convolution              conv_15                  1 1 46 47 0=8 1=1 11=1 12=1 13=1 14=0 2=1 3=1 4=0 5=1 6=1024
+Swish                    silu_33                  1 1 47 48
+Convolution              convsigmoid_2            1 1 48 49 0=128 1=1 11=1 12=1 13=1 14=0 2=1 3=1 4=0 5=1 6=1024 9=4
+Reshape                  reshape_44               1 1 49 50 0=1 1=1 2=-1
+BinaryOp                 mul_4                    2 1 44 50 51 0=2
+Convolution              conv_17                  1 1 51 52 0=32 1=1 11=1 12=1 13=1 14=0 2=1 3=1 4=0 5=1 6=4096
+BinaryOp                 add_5                    2 1 52 41 53 0=0
+Split                    splitncnn_7              1 2 53 54 55
+Concat                   cat_0                    2 1 54 55 56 0=0
+Permute                  permute_38               1 1 56 57 0=3
+LayerNorm                ln_23                    1 1 57 58 0=64 1=1.000000e-06 2=1
+Permute                  permute_39               1 1 58 59 0=4
+Deconvolution            deconv_19                1 1 59 60 0=16 1=2 11=2 12=1 13=2 14=0 18=0 19=0 2=1 3=2 4=0 5=1 6=4096
+Concat                   cat_1                    2 1 60 20 61 0=0
+Permute                  permute_40               1 1 61 62 0=3
+LayerNorm                ln_24                    1 1 62 63 0=32 1=1.000000e-06 2=1
+Permute                  permute_41               1 1 63 64 0=4
+Deconvolution            deconv_20                1 1 64 65 0=8 1=2 11=2 12=1 13=2 14=0 18=0 19=0 2=1 3=2 4=0 5=1 6=1024
+Convolution              conv_18                  1 1 65 66 0=3 1=1 11=1 12=1 13=1 14=0 2=1 3=1 4=0 5=1 6=24
+Crop                     slice_0                  1 1 66 out0 -23310=2,90,160 -23311=2,1,2 -23309=2,0,0

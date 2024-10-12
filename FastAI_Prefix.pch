@@ -1,0 +1,22 @@
+//
+//  FastAI_Prefix.pch
+//  RippleDev
+//
+//  Created by mike on 2024/9/11.
+//
+
+#ifndef RippleDev_Prefix_h
+#define RippleDev_Prefix_h
+
+#ifdef __cplusplus
+#import <opencv2/opencv.hpp>
+#endif
+
+#ifdef __OBJC__
+
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+
+#endif
+
+#endif /* FastAI_Prefix */
